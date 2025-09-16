@@ -40,6 +40,50 @@
     .whats-float a {background:#25D366; color:#fff; padding:14px 20px; border-radius:50px; font-weight:600; text-decoration:none; box-shadow:0 4px 12px rgba(0,0,0,0.2);} 
     .whats-float a:hover {background:#1ebe5d;}
   </style>
+  <!-- Cole este bloco CSS no FINAL do seu <style> atual. Não precisa mudar nada no HTML. -->
+<style>
+  /* HERO com imagens laterais via pseudo‑elementos */
+  .hero{ position: relative; }
+
+  /* Tamanho/posição das imagens laterais */
+  .hero::before,
+  .hero::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 260px;           /* ajuste aqui a largura */
+    height: 260px;          /* ajuste aqui a altura  */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;   /* não interfere nos cliques */
+  }
+
+  /* Esquerda */
+  .hero::before{
+    left: 40px;             /* distância da borda esquerda */
+    background-image: url('imagem-esquerda.svg');  /* troque para .png se for o seu arquivo */
+  }
+
+  /* Direita */
+  .hero::after{
+    right: 40px;            /* distância da borda direita */
+    background-image: url('imagem-direita.svg');   /* troque para .png se for o seu arquivo */
+  }
+
+  /* Responsivo: esconda as imagens em telas menores */
+  @media (max-width: 980px){
+    .hero::before,
+    .hero::after{ display: none; }
+  }
+</style>
+
+<!-- Observações:
+1) Envie os arquivos "imagem-esquerda.svg" e "imagem-direita.svg" para a RAIZ do repositório (mesmo nível do index.html). 
+2) Se os seus arquivos forem .png/.jpg, troque a extensão nas linhas de background-image.
+3) Ajuste width/height e left/right conforme preferir.
+4) Caso esteja usando cache do GitHub Pages, force recarregar com CTRL+F5 ou adicione ?v=1 ao final das URLs. -->
 </head>
 <body>
   <header>
