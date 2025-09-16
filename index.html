@@ -122,6 +122,49 @@
   .hero{ padding-left: 16px; padding-right: 16px; }
   .hero::before, .hero::after{ display: none; }
 }
+/* Cards de serviços: título grande; descrição escondida; animação no hover */
+.grid .service { cursor: default; }
+
+.grid .service h3{
+  font-size: 1.35rem;          /* título grande no estado normal */
+  margin: 0;
+  line-height: 1.25;
+  transition: font-size .25s ease, transform .25s ease, margin-bottom .25s ease;
+}
+
+.grid .service p{
+  opacity: 0;                   /* escondido inicialmente */
+  max-height: 0;                /* colapsa o espaço */
+  margin: 0;
+  overflow: hidden;
+  transform: translateY(8px);   /* começa um pouco mais baixo */
+  transition: opacity .25s ease, max-height .25s ease, transform .25s ease;
+}
+
+/* Ao passar o mouse (ou focar pelo teclado) */
+.grid .service:hover h3,
+.grid .service:focus-within h3{
+  font-size: 1.1rem;            /* título diminui */
+  margin-bottom: 8px;           /* abre espaço para a descrição */
+  transform: translateY(-2px);  /* sobe um pouco */
+}
+
+.grid .service:hover p,
+.grid .service:focus-within p{
+  opacity: 1;                   /* aparece suavemente */
+  max-height: 200px;            /* libera espaço (ajuste se quiser) */
+  transform: translateY(0);
+}
+
+/* Mobile/touch: como não tem hover, mostramos tudo sempre */
+@media (hover: none){
+  .grid .service h3{ font-size: 1.2rem; }
+  .grid .service p{
+    opacity: 1;
+    max-height: none;
+    transform: none;
+  }
+}
 
 </style>
 
