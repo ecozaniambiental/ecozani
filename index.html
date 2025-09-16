@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ECOZANI • Soluções Ambientais</title>
   <meta name="description" content="Consultoria ambiental no Oeste Paulista: licenciamento, estudos, outorga, geoprocessamento, CAR/PRA, ESG, topografia e georreferenciamento. Orçamento via WhatsApp." />
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <style>
     :root {
@@ -17,243 +16,72 @@
       --texto-claro: #374151;
       --header-bg: #cec8b4;
     }
-    body {margin:0; font-family: 'Segoe UI', Arial, sans-serif; background: var(--cinza-fundo); color: var(--texto); line-height:1.6;}
-    header {background: var(--header-bg); color: var(--texto); padding:10px 20px; position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #e5e7eb;}
-    .brand-wrap img {height:60px; display:block;}
-    nav a {margin-left:20px; color:var(--verde-principal); text-decoration:none; font-weight:600;}
-    nav a:hover {text-decoration:underline;}
-    .hero {padding:60px 20px; background:var(--verde-principal); text-align:center; color: #fff;}
-    .hero h2 {font-size:2.2rem; margin:0; color: #fff;}
-    .hero p {max-width:700px; margin:15px auto 25px; color:#f3f4f6;}
-    .btn {display:inline-block; background:var(--verde-claro); color:#fff; padding:14px 24px; border-radius:8px; text-decoration:none; font-weight:600; box-shadow:0 4px 6px rgba(0,0,0,0.1);} 
-    .btn:hover {background:#059669;}
-    section {padding:60px 20px; max-width:1100px; margin:auto;}
-    h2 {color:var(--verde-principal); margin-bottom:20px; font-size:1.8rem;}
-    .grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;}
-    .service {background:var(--cinza-card); border:1px solid #e5e7eb; border-radius:12px; padding:20px; transition:.2s ease;}
-    .service:hover {box-shadow:0 4px 12px rgba(0,0,0,0.08);}
-    .service h3 {margin-top:0; color:var(--verde-principal); font-size:1.2rem;}
-    .service p {color:var(--texto-claro);}
-    ul {padding-left:20px;}
-    footer {background:var(--verde-principal); color:#fff; text-align:center; padding:20px; margin-top:40px;}
-    .whats-float {position:fixed; right:20px; bottom:20px;}
-    .whats-float a {background:#25D366; color:#fff; padding:14px 20px; border-radius:50px; font-weight:600; text-decoration:none; box-shadow:0 4px 12px rgba(0,0,0,0.2);} 
-    .whats-float a:hover {background:#1ebe5d;}
+
+    body { margin:0; font-family: 'Segoe UI', Arial, sans-serif; background:var(--cinza-fundo); color:var(--texto); line-height:1.6; }
+
+    header { background:var(--header-bg); color:var(--texto); padding:10px 20px; position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #e5e7eb; }
+    .brand-wrap img { height:60px; display:block; }
+    nav a { margin-left:20px; color:var(--verde-principal); text-decoration:none; font-weight:600; }
+    nav a:hover { text-decoration:underline; }
+
+    /* HERO */
+    .hero { position:relative; padding:40px 340px 32px; background:var(--verde-principal); color:#fff; text-align:center; }
+    .hero h2 { font-size:2.2rem; margin:0; color:#fff; }
+    .hero p { max-width:700px; margin:15px auto 25px; color:#f3f4f6; }
+    .hero > * { position:relative; z-index:2; }
+
+    /* Imagens laterais do hero */
+    .hero::before, .hero::after { content:""; position:absolute; top:50%; transform:translateY(-50%); width:300px; height:300px; background-size:contain; background-repeat:no-repeat; background-position:center; pointer-events:none; z-index:1; }
+    .hero::before { left:40px; background-image:url('imagem-esquerda.svg'); }
+    .hero::after  { right:40px; background-image:url('imagem-direita.svg'); }
+
+    /* Botão */
+    .btn { display:inline-block; background:var(--verde-claro); color:#fff; padding:14px 24px; border-radius:8px; text-decoration:none; font-weight:600; box-shadow:0 4px 6px rgba(0,0,0,0.1); }
+    .btn:hover { background:#059669; }
+
+    /* Seções gerais */
+    section { padding:32px 20px 40px; max-width:1100px; margin:auto; }
+    h2 { color:var(--verde-principal); margin-bottom:16px; font-size:1.8rem; }
+
+    /* Cards de serviços */
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:24px; }
+    .service { background:var(--cinza-card); border:1px solid #e5e7eb; border-radius:12px; padding:20px; transition:.2s ease; cursor:default; }
+    .service:hover { box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+    .service h3 { margin:0; color:var(--verde-principal); font-size:1.35rem; line-height:1.25; transition:font-size .25s ease, transform .25s ease, margin-bottom .25s ease; }
+    .service p { color:var(--texto-claro); opacity:0; max-height:0; margin:0; overflow:hidden; transform:translateY(8px); transition:opacity .25s ease, max-height .25s ease, transform .25s ease; }
+    .service:hover h3, .service:focus-within h3 { font-size:1.1rem; margin-bottom:8px; transform:translateY(-2px); }
+    .service:hover p, .service:focus-within p { opacity:1; max-height:200px; transform:translateY(0); }
+
+    /* Quem somos em 2 colunas */
+    .sobre-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center; }
+    .sobre-img img { width:100%; height:auto; max-width:520px; border-radius:12px; display:block; }
+
+    /* Espaçamentos finos entre blocos */
+    #servicos { padding-bottom:10px; }
+    #servicos .grid { margin-bottom:0; }
+    #sobre { padding-top:10px; padding-bottom:10px; }
+    #sobre > *:last-child { margin-bottom:0; }
+    #sobre h2 { margin-bottom:10px; }
+    #sobre p, #sobre ul { margin-bottom:10px; }
+    #contato { padding-top:10px; }
+
+    /* WhatsApp flutuante */
+    .whats-float { position:fixed; right:20px; bottom:20px; }
+    .whats-float a { background:#25D366; color:#fff; padding:14px 20px; border-radius:50px; font-weight:600; text-decoration:none; box-shadow:0 4px 12px rgba(0,0,0,0.2); }
+    .whats-float a:hover { background:#1ebe5d; }
+
+    footer { background:var(--verde-principal); color:#fff; text-align:center; padding:20px; margin-top:40px; }
+
+    /* Responsivo */
+    @media (max-width:980px){ .hero{ padding:32px 16px; } .hero::before, .hero::after{ display:none; } }
+    @media (hover:none){ .service h3{ font-size:1.2rem; } .service p{ opacity:1; max-height:none; transform:none; } }
+    @media (max-width:900px){ .sobre-grid{ grid-template-columns:1fr; } .sobre-img{ margin-top:12px; } #sobre{ padding-bottom:16px; } #contato{ padding-top:16px; } }
   </style>
-  <!-- Cole este bloco CSS no FINAL do seu <style> atual. Não precisa mudar nada no HTML. -->
-<style>
-  /* HERO com imagens laterais via pseudo‑elementos */
-  .hero{ position: relative; }
-
-  /* Tamanho/posição das imagens laterais */
-  .hero::before,
-  .hero::after{
-    content: "";
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 260px;           /* ajuste aqui a largura */
-    height: 260px;          /* ajuste aqui a altura  */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    pointer-events: none;   /* não interfere nos cliques */
-  }
-
-  /* Esquerda */
-  .hero::before{
-    left: 40px;             /* distância da borda esquerda */
-    background-image: url('imagem-esquerda.svg');  /* troque para .png se for o seu arquivo */
-  }
-
-  /* Direita */
-  .hero::after{
-    right: 40px;            /* distância da borda direita */
-    background-image: url('imagem-direita.svg');   /* troque para .png se for o seu arquivo */
-  }
-
-  /* Responsivo: esconda as imagens em telas menores */
-  @media (max-width: 980px){
-    .hero::before,
-    .hero::after{ display: none; }
-  }
-  /* === HERO: reserva espaço lateral e corrige camadas === */
-.hero{
-  position: relative;
-  /* 300px da imagem + 40px de margem de cada lado */
-  padding-left: 340px;
-  padding-right: 340px;
-}
-
-.hero-content{
-  position: relative;
-  z-index: 2;          /* texto acima das imagens */
-}
-
-/* imagens laterais */
-.hero::before,
-.hero::after{
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 300px;        /* ajuste o tamanho aqui */
-  height: 300px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  pointer-events: none;
-  z-index: 1;          /* abaixo do texto */
-}
-
-/* esquerda e direita */
-.hero::before{
-  left: 40px;
-  background-image: url("imagem-esquerda.svg");
-}
-.hero::after{
-  right: 40px;
-  background-image: url("imagem-direita.svg");
-}
-
-/* Responsivo: em telas menores não mostra as laterais
-   e tira a reserva de espaço */
-@media (max-width: 980px){
-  .hero{ padding-left: 16px; padding-right: 16px; }
-  .hero::before, .hero::after{ display: none; }
-}
-/* Cards de serviços: título grande; descrição escondida; animação no hover */
-.grid .service { cursor: default; }
-
-.grid .service h3{
-  font-size: 1.35rem;          /* título grande no estado normal */
-  margin: 0;
-  line-height: 1.25;
-  transition: font-size .25s ease, transform .25s ease, margin-bottom .25s ease;
-}
-
-.grid .service p{
-  opacity: 0;                   /* escondido inicialmente */
-  max-height: 0;                /* colapsa o espaço */
-  margin: 0;
-  overflow: hidden;
-  transform: translateY(8px);   /* começa um pouco mais baixo */
-  transition: opacity .25s ease, max-height .25s ease, transform .25s ease;
-}
-
-/* Ao passar o mouse (ou focar pelo teclado) */
-.grid .service:hover h3,
-.grid .service:focus-within h3{
-  font-size: 1.1rem;            /* título diminui */
-  margin-bottom: 8px;           /* abre espaço para a descrição */
-  transform: translateY(-2px);  /* sobe um pouco */
-}
-
-.grid .service:hover p,
-.grid .service:focus-within p{
-  opacity: 1;                   /* aparece suavemente */
-  max-height: 200px;            /* libera espaço (ajuste se quiser) */
-  transform: translateY(0);
-}
-
-/* Mobile/touch: como não tem hover, mostramos tudo sempre */
-@media (hover: none){
-  .grid .service h3{ font-size: 1.2rem; }
-  .grid .service p{
-    opacity: 1;
-    max-height: none;
-    transform: none;
-  }
-}
-/* Layout 2 colunas para o bloco "Quem somos" */
-.sobre-grid{
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* metade texto, metade imagem */
-  gap: 32px;
-  align-items: center;
-}
-
-.sobre-img img{
-  width: 100%;
-  height: auto;
-  max-width: 520px;     /* opcional: limite horizontal */
-  border-radius: 12px;  /* opcional: cantos suaves */
-  display: block;
-}
-
-/* Mobile: empilha (texto em cima, imagem embaixo) */
-@media (max-width: 900px){
-  .sobre-grid{ grid-template-columns: 1fr; }
-  .sobre-img{ margin-top: 12px; }
-}
-/* ——— Espaçamento vertical mais compacto ——— */
-.hero{
-  padding-top: 40px;      /* era 60px */
-  padding-bottom: 32px;   /* era 60px */
-}
-
-section{
-  padding-top: 32px;      /* era 60px */
-  padding-bottom: 40px;   /* era 60px */
-}
-
-h2{
-  margin-bottom: 16px;    /* era 20px (se quiser ainda menor) */
-}
-
-/* Opcional: ainda mais justo no mobile */
-@media (max-width: 900px){
-  .hero{ padding: 32px 16px; }
-  section{ padding: 28px 16px 32px; }
-}
-/* ——— Enxugar o espaço entre #servicos e #sobre ——— */
-#servicos{ 
-  padding-bottom: 10px;     /* era maior */
-}
-#servicos .grid{
-  margin-bottom: 0;         /* garante que o grid não crie espaço extra */
-}
-
-#sobre{
-  padding-top: 10px;        /* era maior */
-}
-
-/* Se quiser ainda mais próximo, pode ir para 12px/12px */
-/* — Compactar espaço entre #sobre e #contato — */
-#sobre{
-  padding-bottom: 10px;      /* reduza se quiser mais justo */
-}
-#sobre > *:last-child{
-  margin-bottom: 0;          /* remove margem do último parágrafo/lista */
-}
-#contato{
-  padding-top: 10px;         /* reduza se quiser mais justo */
-}
-
-/* Ajustes finos dentro do #sobre (opcional) */
-#sobre h2{ margin-bottom: 10px; }
-#sobre p, #sobre ul{ margin-bottom: 10px; }
-
-/* Mobile um pouco mais apertado */
-@media (max-width: 900px){
-  #sobre{ padding-bottom: 16px; }
-  #contato{ padding-top: 16px; }
-}
-
-</style>
-
-<!-- Observações:
-1) Envie os arquivos "imagem-esquerda.svg" e "imagem-direita.svg" para a RAIZ do repositório (mesmo nível do index.html). 
-2) Se os seus arquivos forem .png/.jpg, troque a extensão nas linhas de background-image.
-3) Ajuste width/height e left/right conforme preferir.
-4) Caso esteja usando cache do GitHub Pages, force recarregar com CTRL+F5 ou adicione ?v=1 ao final das URLs. -->
 </head>
 <body>
   <header>
     <div class="brand-wrap">
-      <a href="/">
-        <img src="cabecalho.svg" alt="ECOZANI • Soluções Ambientais" />
-      </a>
+      <a href="/"><img src="cabecalho.svg" alt="ECOZANI • Soluções Ambientais" /></a>
     </div>
     <nav>
       <a href="#servicos">Serviços</a>
@@ -284,26 +112,23 @@ h2{
   </section>
 
   <section id="sobre">
-  <div class="sobre-grid">
-    <div class="sobre-text">
-      <h2>Quem somos</h2>
-      <p>A Ecozani Soluções Ambientais é uma consultoria especializada na área ambiental, oferecendo soluções inteligentes e eficazes para empresas, indústrias e órgãos públicos. Atuamos com foco técnico e compromisso ambiental em toda a região Oeste Paulista.</p>
-      <ul>
-        <li>Profissionais especialistas na área</li>
-        <li>Atendimento regional</li>
-        <li>Soluções personalizadas</li>
-        <li>Consultoria com foco prático</li>
-      </ul>
-      <p>Siga no Instagram: <a href="https://instagram.com/ecozani_amb" target="_blank">@ecozani_amb</a></p>
+    <div class="sobre-grid">
+      <div class="sobre-text">
+        <h2>Quem somos</h2>
+        <p>A Ecozani Soluções Ambientais é uma consultoria especializada na área ambiental, oferecendo soluções inteligentes e eficazes para empresas, indústrias e órgãos públicos. Atuamos com foco técnico e compromisso ambiental em toda a região Oeste Paulista.</p>
+        <ul>
+          <li>Profissionais especialistas na área</li>
+          <li>Atendimento regional</li>
+          <li>Soluções personalizadas</li>
+          <li>Consultoria com foco prático</li>
+        </ul>
+        <p>Siga no Instagram: <a href="https://instagram.com/ecozani_amb" target="_blank">@ecozani_amb</a></p>
+      </div>
+      <div class="sobre-img">
+        <img src="quem-somos.svg" alt="Equipe e atuação da ECOZANI Soluções Ambientais">
+      </div>
     </div>
-
-    <div class="sobre-img">
-      <!-- Dica: renomeie sua imagem para evitar espaços, ex.: quem-somos.svg -->
-      <img src="quem-somos.svg" alt="Equipe e atuação da ECOZANI Soluções Ambientais">
-    </div>
-  </div>
-</section>
-
+  </section>
 
   <section id="contato">
     <h2>Contato</h2>
