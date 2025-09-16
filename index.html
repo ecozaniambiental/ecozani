@@ -186,6 +186,26 @@
   .sobre-grid{ grid-template-columns: 1fr; }
   .sobre-img{ margin-top: 12px; }
 }
+/* ——— Espaçamento vertical mais compacto ——— */
+.hero{
+  padding-top: 40px;      /* era 60px */
+  padding-bottom: 32px;   /* era 60px */
+}
+
+section{
+  padding-top: 32px;      /* era 60px */
+  padding-bottom: 40px;   /* era 60px */
+}
+
+h2{
+  margin-bottom: 16px;    /* era 20px (se quiser ainda menor) */
+}
+
+/* Opcional: ainda mais justo no mobile */
+@media (max-width: 900px){
+  .hero{ padding: 32px 16px; }
+  section{ padding: 28px 16px 32px; }
+}
 
 </style>
 
