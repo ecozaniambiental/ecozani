@@ -215,10 +215,30 @@ h2{
 }
 
 #sobre{
-  padding-top: 16px;        /* era maior */
+  padding-top: 10px;        /* era maior */
 }
 
 /* Se quiser ainda mais próximo, pode ir para 12px/12px */
+/* — Compactar espaço entre #sobre e #contato — */
+#sobre{
+  padding-bottom: 20px;      /* reduza se quiser mais justo */
+}
+#sobre > *:last-child{
+  margin-bottom: 0;          /* remove margem do último parágrafo/lista */
+}
+#contato{
+  padding-top: 10px;         /* reduza se quiser mais justo */
+}
+
+/* Ajustes finos dentro do #sobre (opcional) */
+#sobre h2{ margin-bottom: 10px; }
+#sobre p, #sobre ul{ margin-bottom: 10px; }
+
+/* Mobile um pouco mais apertado */
+@media (max-width: 900px){
+  #sobre{ padding-bottom: 16px; }
+  #contato{ padding-top: 16px; }
+}
 
 </style>
 
