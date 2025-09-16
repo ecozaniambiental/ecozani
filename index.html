@@ -165,6 +165,27 @@
     transform: none;
   }
 }
+/* Layout 2 colunas para o bloco "Quem somos" */
+.sobre-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* metade texto, metade imagem */
+  gap: 32px;
+  align-items: center;
+}
+
+.sobre-img img{
+  width: 100%;
+  height: auto;
+  max-width: 520px;     /* opcional: limite horizontal */
+  border-radius: 12px;  /* opcional: cantos suaves */
+  display: block;
+}
+
+/* Mobile: empilha (texto em cima, imagem embaixo) */
+@media (max-width: 900px){
+  .sobre-grid{ grid-template-columns: 1fr; }
+  .sobre-img{ margin-top: 12px; }
+}
 
 </style>
 
@@ -210,16 +231,26 @@
   </section>
 
   <section id="sobre">
-    <h2>Quem somos</h2>
-    <p>A Ecozani Soluções Ambientais é uma consultoria especializada na área ambiental, oferecendo soluções inteligentes e eficazes para empresas, indústrias e órgãos públicos. Atuamos com foco técnico e compromisso ambiental em toda a região Oeste Paulista.</p>
-    <ul>
-      <li>Profissionais especialistas na área</li>
-      <li>Atendimento regional</li>
-      <li>Soluções personalizadas</li>
-      <li>Consultoria com foco prático</li>
-    </ul>
-    <p>Siga no Instagram: <a href="https://instagram.com/ecozani_amb" target="_blank">@ecozani_amb</a></p>
-  </section>
+  <div class="sobre-grid">
+    <div class="sobre-text">
+      <h2>Quem somos</h2>
+      <p>A Ecozani Soluções Ambientais é uma consultoria especializada na área ambiental, oferecendo soluções inteligentes e eficazes para empresas, indústrias e órgãos públicos. Atuamos com foco técnico e compromisso ambiental em toda a região Oeste Paulista.</p>
+      <ul>
+        <li>Profissionais especialistas na área</li>
+        <li>Atendimento regional</li>
+        <li>Soluções personalizadas</li>
+        <li>Consultoria com foco prático</li>
+      </ul>
+      <p>Siga no Instagram: <a href="https://instagram.com/ecozani_amb" target="_blank">@ecozani_amb</a></p>
+    </div>
+
+    <div class="sobre-img">
+      <!-- Dica: renomeie sua imagem para evitar espaços, ex.: quem-somos.svg -->
+      <img src="quem-somos.svg" alt="Equipe e atuação da ECOZANI Soluções Ambientais">
+    </div>
+  </div>
+</section>
+
 
   <section id="contato">
     <h2>Contato</h2>
